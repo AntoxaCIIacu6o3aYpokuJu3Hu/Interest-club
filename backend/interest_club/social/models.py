@@ -34,7 +34,7 @@ class GroupRecord(models.Model):
         return self.name
     
     class Meta:
-        ordering = ["name"]
+        ordering = ["created_date"]
 
 
 class Comment(models.Model):
@@ -48,4 +48,4 @@ class Comment(models.Model):
         return self.text
     
     class Meta:
-        ordering = ["text"]
+        ordering = ["created_date"]
