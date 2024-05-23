@@ -8,7 +8,7 @@ def user_avatar_path(instance, filename):
 
 class CustomUser(AbstractUser):
     patronymic = models.CharField(max_length=150, blank=True)
-    avatar = models.ImageField(upload_to=user_avatar_path, blank=True)
+    avatar = models.ImageField(upload_to=user_avatar_path, null=True, blank=True)
 
     def __str__(self):
         return self.username
