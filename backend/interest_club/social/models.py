@@ -35,3 +35,17 @@ class GroupRecord(models.Model):
     
     class Meta:
         ordering = ["name"]
+
+
+class Comment(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='comment_author')
+    parent = models.ForeignKey(GroupRecord, on_delete=models.CASCADE, related_name='comment_parent')
+    text = models.TextField()
+    created_date = models.DateTimeField("created date")
+
+    def __str__(self):
+        return self.text
+    
+    class Meta:
+        ordering = ["text"]
