@@ -25,6 +25,7 @@ class SocialGroup(models.Model):
 class GroupRecord(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='record_author')
+    group = models.ForeignKey(SocialGroup, on_delete=models.CASCADE, related_name='record_parent')
     name = models.CharField(max_length=150)
     description = models.TextField()
     created_date = models.DateTimeField("created date")
