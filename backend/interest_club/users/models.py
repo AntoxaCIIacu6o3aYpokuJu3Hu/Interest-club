@@ -10,9 +10,6 @@ class CustomUser(AbstractUser):
     patronymic = models.CharField(max_length=150, blank=True)
     avatar = models.ImageField(upload_to=user_avatar_path, blank=True)
 
-    def get_avatar_path(self):
-        return f'static/avatars/{self.id}.'
-
     def __str__(self):
         return self.username
     
@@ -21,3 +18,6 @@ class CustomUser(AbstractUser):
         if self.patronymic:
             full_name += f' {self.patronymic}'
         return full_name
+    
+    class Meta:
+        ordering = ['last_name', 'first_name', 'patronymic']
