@@ -24,7 +24,7 @@ class SocialGroup(models.Model):
 
 class GroupRecord(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='record_author')
+    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='record_owner')
     group = models.ForeignKey(SocialGroup, on_delete=models.CASCADE, related_name='record_parent')
     name = models.CharField(max_length=150)
     description = models.TextField()
@@ -40,7 +40,7 @@ class GroupRecord(models.Model):
 
 class Comment(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='comment_author')
+    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='comment_owner')
     parent = models.ForeignKey(GroupRecord, on_delete=models.CASCADE, related_name='comment_parent')
     text = models.TextField()
     created_date = models.DateTimeField("created date")
