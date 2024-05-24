@@ -1,13 +1,12 @@
-from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 from drf_spectacular.utils import extend_schema
-
+from django.shortcuts import get_object_or_404
 
 from users.models import CustomUser
-from users.serializers import RegistrationSerializer, ProfileSerializer
+from users.serializers import RegistrationSerializer, ProfileSerializer, UserSummarySerializer
 from users.permissions import IsThatUser
 
 
@@ -47,3 +46,12 @@ class Profile(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class UserSummary(APIView):
+    serializer_class = UserSummarySerializer
+
+    @extend_schema(summary="Get user summary (fullname + avatar) by id")
+    def get(self, request, pk, format=None):
+        user = get_object_or_404(CustomUser, pk=pk)
+        serializer = UserSummarySerializer(user)
+        return Response(serializer.data)

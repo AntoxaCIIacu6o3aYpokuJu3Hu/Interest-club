@@ -5,6 +5,7 @@ from users import views
 urlpatterns = [
     path('registration/', views.Registration.as_view()),
     path('profile/', views.Profile.as_view()),
+    path('user/<int:pk>', views.UserSummary.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

@@ -1,12 +1,9 @@
 from rest_framework import serializers
-from rest_framework.exceptions import AuthenticationFailed
-
-from rest_framework_simplejwt.tokens import RefreshToken
 
 from users.models import CustomUser
 
 
-class ShortUserSerializer(serializers.ModelSerializer):
+class UserSummarySerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = ['id', 'last_name', 'first_name', 'patronymic', 'avatar']
