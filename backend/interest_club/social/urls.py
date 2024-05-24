@@ -4,6 +4,7 @@ from social import views
 
 urlpatterns = [
     path('groups/', views.SocialGroupList.as_view()),
+    path('groups/membership/', views.SocialGroupMembership.as_view()),
     path('groups/<str:pk>/', views.SocialGroupDetail.as_view()),
 ]
 
