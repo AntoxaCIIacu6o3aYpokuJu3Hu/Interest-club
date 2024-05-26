@@ -21,7 +21,7 @@ class CommentInline(admin.StackedInline):
 
 class GroupRecordAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None, {"fields": ["author", "name", "description"]}),
+        (None, {"fields": ["owner", "name", "description"]}),
         ("Creation date", {"fields": ["created_date"], "classes": ["collapse"]}),
         ("Event date", {"fields": ["event_date"], "classes": ["collapse"]}),
     ]

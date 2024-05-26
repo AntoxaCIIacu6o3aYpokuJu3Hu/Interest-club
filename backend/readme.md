@@ -38,3 +38,23 @@ Start the server
 ```
 python manage.py runserver
 ```
+
+**Exploring the API**
+
+Start the server and follow this link:
+
+[http://127.0.0.1:8000/api/schema/swagger-ui/](http://127.0.0.1:8000/api/schema/swagger-ui/)
+
+The the page is completely blank, try oppening in an another tab.
+
+On this page you can see all the endpoint implemented on the backend. You can send request to each of them - the page would have examples of request bodies that you can modify.
+
+To access most endpoint, you need to be logged in. Use the /api/token endoint with your username and password (you can create a user with the /api/users/registration/ endpoint, through the admin page or with 'python manage.py createsuperuser'). You would be given an short-lived access token and an long-lived refresh token. You can use the refresh token to get a new access token through the /api/token/refresh/ endpoint once the previous one expires. You can log in by pressing a big green 'Authorize' button on the top-right of the page and entering an access token.
+
+**Accessing the admin menu**
+
+Start the server and follow this link:
+
+[http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/)
+
+You can use the admin panel to add, modify and delete database entries, such as users, groups, records(events/topics) and comments.
