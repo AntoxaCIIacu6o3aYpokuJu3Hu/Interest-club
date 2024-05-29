@@ -1,6 +1,6 @@
 **How to get the backend server up and running**
 
-You need not run a series of commands in the terminal
+You need to run a series of commands in the terminal
 
 The assumption is that you are using Windows. If you are on Linux or Mac (and so, are using bash instead of cmd or powershell), you would need to edit some commands (replace '\' with '/', maybe 'python' with 'python3', and the process of activating the virtual environment could also be different).
 
